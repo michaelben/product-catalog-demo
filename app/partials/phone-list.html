@@ -1,0 +1,30 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span2">
+      <!--Sidebar content-->
+
+      Product Category:<br><br>
+      <input class="btn" type="button" value="Motorola" ng-click="myfunc('Motorola')"><br>
+      <input class="btn" type="button" value="Dell" ng-click="myfunc('Dell')"><br>
+      <input class="btn" type="button" value="Samsung" ng-click="myfunc('Samsung')"><br>
+      <input class="btn" type="button" value="Nexus" ng-click="myfunc('Nexus')"><br>
+      <input class="btn" type="button" value="LG" ng-click="myfunc('LG')"><br>
+      <input class="btn" type="button" value="T-Mobile" ng-click="myfunc('T-Mobile')"><br>
+      <input class="btn" type="button" value="SANYO" ng-click="myfunc('SANYO')"><br>
+      <input class="btn" type="button" value="All" ng-click="myfunc('')"><br>
+      
+    </div>
+    <div class="span10">
+      <!--Body content-->
+
+      <ul class="phones">
+        <li ng-repeat="phone in phones | filter:category" class="thumbnail">
+          <a href="#/phones/{{phone.id}}" class="thumb"><img ng-src="{{phone.imageUrl}}"></a>
+          <a href="#/phones/{{phone.id}}">{{phone.name}}</a>
+          <p>{{phone.snippet}}</p>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</div>

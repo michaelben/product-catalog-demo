@@ -1,0 +1,11 @@
+{
+  "name": "product-catalog-demo",
+  "subdomain": "product-catalog-demo",
+  "scripts": {
+    "start": "node scripts/web-server.js"
+  },
+  "version": "0.0.0",
+  "engines": {
+    "node": "0.8.x"
+  }
+}
