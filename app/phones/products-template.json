@@ -1,0 +1,23 @@
+[
+    {
+        "name": "", 
+        "category": "",
+        "description": "",
+        "sizeAndWeight": {
+            "dimensions": [
+                "", 
+                "", 
+                ""
+            ], 
+            "weight": ""
+        }, 
+        "price": "",
+        "deliveryTime": "",
+        "images": [
+            "", 
+            "", 
+            "", 
+            ""
+        ]
+    },
+]

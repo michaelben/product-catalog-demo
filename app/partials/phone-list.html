@@ -4,6 +4,7 @@
       <!--Sidebar content-->
 
       Product Category:<br><br>
+      <!--
       <input class="btn" type="button" value="Motorola" ng-click="myfunc('Motorola')"><br>
       <input class="btn" type="button" value="Dell" ng-click="myfunc('Dell')"><br>
       <input class="btn" type="button" value="Samsung" ng-click="myfunc('Samsung')"><br>
@@ -12,18 +13,28 @@
       <input class="btn" type="button" value="T-Mobile" ng-click="myfunc('T-Mobile')"><br>
       <input class="btn" type="button" value="SANYO" ng-click="myfunc('SANYO')"><br>
       <input class="btn" type="button" value="All" ng-click="myfunc('')"><br>
+      -->
+      <ul class="categories">
+          <li ng-repeat="cate in categories">
+              <input class="btn" type="button" value={{cate}} ng-click="setCategory($event)">
+          </li>
+          <li ><input class="btn" type="button" value="All" ng-click="setCategory($event)"></li>
+      </ul>
+
       
     </div>
     <div class="span10">
       <!--Body content-->
 
-      <ul class="phones">
-        <li ng-repeat="phone in phones | filter:category" class="thumbnail">
-          <a href="#/phones/{{phone.id}}" class="thumb"><img ng-src="{{phone.imageUrl}}"></a>
-          <a href="#/phones/{{phone.id}}">{{phone.name}}</a>
-          <p>{{phone.snippet}}</p>
-        </li>
-      </ul>
+      <table border="1">
+        <tr ng-repeat="phonerow in phones | filter:{'category':category} | tablearray" class="tablerow">
+        <td ng-repeat="phone in phonerow" class="tablecell">
+            <a href="#/products/{{phone.id}}" class="thumb"><img ng-src="{{phone.images[0]}}"></a>
+            <p align="center"><a href="#/products/{{phone.id}}">{{phone.name}}</a></p>
+          <p style="color:red" align="center">{{phone.price}}</p>
+        </td>
+        </tr>
+      </table>
 
     </div>
   </div>

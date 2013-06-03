@@ -4,12 +4,28 @@ body {
   padding-top: 20px;
 }
 
+.categories {
+  list-style: none;
+}
+
 .phones {
   list-style: none;
 }
 
+.table {
+}
+
+.tablerow {
+  height: 200px;
+}
+
+.tablecell {
+  height: 200px;
+  width: 200px;
+}
+
 .thumb {
-  float: left;
+  float: center;
   margin: -1em 1em 1.5em 0em;
   padding-bottom: 1em;
   height: 100px;

@@ -2,12 +2,21 @@
 
 /* Controllers */
 
-function PhoneListCtrl($scope, Phone) {
-  $scope.phones = Phone.query();
-  $scope.orderProp = 'age';
+function PhoneListCtrl($rootScope, $scope, Phone) {
+  $scope.phones = Phone.query(function() {
+    $scope.categories = [];
+    for (var i=0; i<$scope.phones.length; i++) {
+        var phone = $scope.phones[i];
+        if(!phone.id) phone.id = i;
+        if($scope.categories.indexOf(phone.category) == -1) $scope.categories.push(phone.category);
+    }
+    $rootScope.phones = $scope.phones;
+  });
   $scope.category = '';
-  $scope.myfunc = function(value) {
-      $scope.category = value;
+  $scope.setCategory = function(ev) {
+      var category = angular.element(ev.srcElement).attr("value");
+      if(category == 'All') category = '';
+      $scope.category = category;
   }
 }
 
@@ -15,10 +24,15 @@ function PhoneListCtrl($scope, Phone) {
 
 
 
-function PhoneDetailCtrl($scope, $routeParams, Phone) {
-  $scope.phone = Phone.get({phoneId: $routeParams.phoneId}, function(phone) {
-    $scope.mainImageUrl = phone.images[0];
+function PhoneDetailCtrl($rootScope, $scope, $routeParams, Phone) {
+  $scope.phone = $rootScope.phones[$routeParams.productId];
+  $scope.mainImageUrl = $scope.phone.images[0];
+  /*
+  $scope.phone = Phone.query(function(phones) {
+    $scope.phone = phones[$routeParams.productId];
+    $scope.mainImageUrl = $scope.phone.images[0];
   });
+  */
 
   $scope.setImage = function(imageUrl) {
     $scope.mainImageUrl = imageUrl;
